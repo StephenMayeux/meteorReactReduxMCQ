@@ -1,0 +1,62 @@
+{
+  "name": "game",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
+    "eslint-plugin-meteor": "^3.6.0",
+    "eslint-plugin-react": "^5.2.2"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "plugins": [
+      "meteor",
+      "react"
+    ],
+    "extends": [
+      "airbnb/base",
+      "plugin:meteor/guide",
+      "plugin:react/recommended"
+    ],
+    "globals": {
+      "server": false,
+      "browser": false,
+      "expect": false
+    },
+    "rules": {
+      "import/no-unresolved": 0,
+      "no-underscore-dangle": [
+        "error",
+        {
+          "allow": [
+            "_id",
+            "_ensureIndex",
+            "_verifyEmailToken",
+            "_resetPasswordToken",
+            "_name"
+          ]
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "eslint-plugin-import": "^1.13.0",
+    "meteor-node-stubs": "~0.2.0",
+    "react": "^15.3.0",
+    "react-addons-pure-render-mixin": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.6.1",
+    "react-router-redux": "^4.0.5",
+    "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0"
+  }
+}
