@@ -1,6 +1,6 @@
 import React from 'react';
 
-export function AnswerRow({ isQuestionAnswered, questionAnswered, answer, databaseQuestionId, questionId, checkAnswer }) {
+export default function AnswerRow({ isQuestionAnswered, questionAnswered, answer, databaseQuestionId, questionId, checkAnswer }) {
   let styles = {};
   const { goodAnswer, checked, disabled, answerText } = answer;
 

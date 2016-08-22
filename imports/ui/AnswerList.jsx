@@ -1,13 +1,10 @@
 import React from 'react';
 
-import { AnswerRow } from './AnswerRow';
+import AnswerRow from './AnswerRow';
 
 
 export default function AnswerList({ question,
   checkAnswer, questionId, questionAnswered, databaseQuestionId, isQuestionAnswered }) {
-  // if (this.props.question.isQuestionAnswered){
-  //   return <div>ANSWERED</div>;
-  // }
   return (
     <div>
       {question.questionText}

@@ -1,101 +1,94 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 import AnswerList from './AnswerList';
+import { stringToNumber } from '../modules/stringToNumber';
 
-export default class Question extends Component {
-  renderQuestions() {
-    const questionIdToNumber = this.filterInt(this.props.params.questionId);
-    for (const question of this.props.questions) {
+export default function Question({ params, questions, checkAnswer, questionAnswered }) {
+  function renderQuestions() {
+    const questionIdToNumber = stringToNumber(params.questionId);
+    for (const question of questions) {
       if (question.questionNumber === questionIdToNumber) {
         return (
           <AnswerList
             key={question._id}
             question={question}
-            checkAnswer={this.props.checkAnswer}
+            checkAnswer={checkAnswer}
             questionId={question.questionNumber}
-            questionAnswered={this.props.questionAnswered}
+            questionAnswered={questionAnswered}
             databaseQuestionId={question._id}
             isQuestionAnswered={question.isQuestionAnswered}
           />
         );
       }
     }
-    return <div>No question with the number {this.props.params.questionId} in database</div>;
+    return <div>No question with the number {params.questionId} in database</div>;
   }
-  filterInt(value) {
-    if (/^(\-|\+)?([0-9]+|Infinity)$/.test(value)) {
-      return Number(value);
-    }
-    return NaN;
-  }
-  renderOnlyPreviousLink(previousQuestion) {
+  function renderOnlyPreviousLink(previousQuestion) {
     return (
       <div>
         <Link to={`/question/${previousQuestion}`}>Previous question</Link>
-        {this.renderQuestions()}
+        {renderQuestions()}
       </div>
     );
   }
-  renderOnlyNextLink(nextQuestion) {
+  function renderOnlyNextLink(nextQuestion) {
     return (
       <div>
-        {this.renderQuestions()}
+        {renderQuestions()}
         <Link to={`/question/${nextQuestion}`}>Next question</Link>
       </div>
     );
   }
-  renderBothLink(previousQuestion, nextQuestion) {
+  function renderBothLink(previousQuestion, nextQuestion) {
     return (
       <div>
         <Link to={`/question/${previousQuestion}`}>Previous question</Link>
-        {this.renderQuestions()}
+        {renderQuestions()}
         <Link to={`/question/${nextQuestion}`}>Next question</Link>
       </div>
     );
   }
-  renderNoLink() {
+  function renderNoLink() {
     return (
       <div>
-        {this.renderQuestions()}
+        {renderQuestions()}
       </div>
     );
   }
-  render() {
-    const isAllAnswered = this.props.questions.every(
-      (question) => question.questionAnswered
-    );
+  const isAllAnswered = questions.every(
+    (question) => question.questionAnswered
+  );
 
-    if (isAllAnswered) {
-      const scores = [];
-      this.props.questions.map(
-        (question) => {
-          let count = 0;
-          question.answers.map(
-            (answer) => {
-              if (answer.checked && answer.goodAnswer) {
-                count = count + 1;
-              }
-              return false;
+  if (isAllAnswered) {
+    const scores = [];
+    questions.map(
+      (question) => {
+        let count = 0;
+        question.answers.map(
+          (answer) => {
+            if (answer.checked && answer.goodAnswer) {
+              count = count + 1;
             }
-          );
-          return scores.push(count);
-        });
-      const sum = scores.reduce((a, b) => a + b, 0);
-      return <div>{`Your score is ${sum} / ${scores.length}`}</div>;
-    }
-
-    const previousQuestion = this.filterInt(this.props.params.questionId) - 1;
-    const nextQuestion = this.filterInt(this.props.params.questionId) + 1;
-
-    if (!previousQuestion && nextQuestion < this.props.questions.length) {
-      return this.renderOnlyNextLink(nextQuestion);
-    } else if (!previousQuestion && nextQuestion > this.props.questions.length) {
-      return this.renderNoLink();
-    } else if (nextQuestion > this.props.questions.length) {
-      return this.renderOnlyPreviousLink(previousQuestion);
-    }
-    return this.renderBothLink(previousQuestion, nextQuestion);
+            return false;
+          }
+        );
+        return scores.push(count);
+      });
+    const sum = scores.reduce((a, b) => a + b, 0);
+    return <div>{`Your score is ${sum} / ${scores.length}`}</div>;
   }
+
+  const previousQuestion = stringToNumber(params.questionId) - 1;
+  const nextQuestion = stringToNumber(params.questionId) + 1;
+
+  if (!previousQuestion && nextQuestion <= questions.length) {
+    return renderOnlyNextLink(nextQuestion);
+  } else if (!previousQuestion && nextQuestion > questions.length) {
+    return renderNoLink();
+  } else if (nextQuestion > questions.length) {
+    return renderOnlyPreviousLink(previousQuestion);
+  }
+  return renderBothLink(previousQuestion, nextQuestion);
 }
 
 Question.propTypes = {
