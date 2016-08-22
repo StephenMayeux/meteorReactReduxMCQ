@@ -4,8 +4,6 @@ export default function questions(state = { questions: [] }, action) {
       const state = { ...state, questions: action.questions };
       return state;
     }
-    // case 'TOGGLE_SHOW_COMPLETED':
-    //   return {...state, hideCompleted: !state.hideCompleted}
     default:
       return state;
   }
