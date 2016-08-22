@@ -40,7 +40,7 @@ export default function AnswerRow({ isQuestionAnswered, questionAnswered, answer
 AnswerRow.propTypes = {
   questionAnswered: React.PropTypes.func,
   answer: React.PropTypes.object,
-  databaseQuestionId: React.PropTypes.object,
+  databaseQuestionId: React.PropTypes.string,
   questionId: React.PropTypes.number,
   isQuestionAnswered: React.PropTypes.bool,
   checkAnswer: React.PropTypes.func,

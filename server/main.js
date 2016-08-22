@@ -30,10 +30,11 @@ if (Questions.find().count() === 0) {
           goodAnswer: false,
         },
       ],
-    },
+    });
+  Questions.insert(
     {
       questionText: 'How much medals did the UK win in Rio for Olympics Games ?',
-      questionNumber: 1,
+      questionNumber: 2,
       isQuestionAnswered: false,
       answers: [
         {
@@ -58,10 +59,11 @@ if (Questions.find().count() === 0) {
           goodAnswer: false,
         },
       ],
-    },
+    });
+  Questions.insert(
     {
       questionText: 'Who is the Prime Minister of UK ?',
-      questionNumber: 1,
+      questionNumber: 3,
       isQuestionAnswered: false,
       answers: [
         {
@@ -86,18 +88,21 @@ if (Questions.find().count() === 0) {
           goodAnswer: false,
         },
       ],
-    }
-  );
+    });
 
   Answers.insert(
     {
       questionNumber: 1,
       goodAnswerNumber: 2,
-    },
+    }
+  );
+  Answers.insert(
     {
       questionNumber: 2,
       goodAnswerNumber: 3,
-    },
+    }
+  );
+  Answers.insert(
     {
       questionNumber: 3,
       goodAnswerNumber: 1,

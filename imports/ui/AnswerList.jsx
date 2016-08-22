@@ -28,6 +28,6 @@ AnswerList.propTypes = {
   checkAnswer: React.PropTypes.func,
   questionId: React.PropTypes.number,
   questionAnswered: React.PropTypes.func,
-  databaseQuestionId: React.PropTypes.object,
+  databaseQuestionId: React.PropTypes.string,
   isQuestionAnswered: React.PropTypes.bool,
 };

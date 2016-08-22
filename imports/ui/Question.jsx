@@ -56,7 +56,7 @@ export default function Question({ params, questions, checkAnswer, questionAnswe
     );
   }
   const isAllAnswered = questions.every(
-    (question) => question.questionAnswered
+    (question) => question.isQuestionAnswered
   );
 
   if (isAllAnswered) {

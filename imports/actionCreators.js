@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Answers } from './api/answers';
+import Answers from './api/answers';
 
 export function checkAnswer(databaseQuestionId, questionId) {
   return () => {
