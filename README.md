@@ -14,6 +14,7 @@
 
 ## Things to improve
 
+- Refactoring Question.jsx component
 - Organize components by package with index.js for each
 - Implementing containers with https://github.com/kadirahq/react-komposer
 - Handling errors with https://github.com/meteor/validated-method
