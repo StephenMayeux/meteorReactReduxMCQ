@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Answer from './Answer';
+import AnswerList from './AnswerList';
 
 export default class Question extends Component {
   renderQuestions() {
@@ -8,7 +8,7 @@ export default class Question extends Component {
     for (const question of this.props.questions) {
       if (question.questionNumber === questionIdToNumber) {
         return (
-          <Answer
+          <AnswerList
             key={question._id}
             question={question}
             checkAnswer={this.props.checkAnswer}
