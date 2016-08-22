@@ -15,6 +15,7 @@ export default class Question extends Component {
             questionId={question.questionNumber}
             questionAnswered={this.props.questionAnswered}
             databaseQuestionId={question._id}
+            isQuestionAnswered={question.isQuestionAnswered}
           />
         );
       }

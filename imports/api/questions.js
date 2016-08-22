@@ -10,7 +10,7 @@ Meteor.methods({
       _id: databaseQuestionId,
     }, {
       $set: {
-        questionAnswered: true,
+        isQuestionAnswered: true,
         'answers.0.disabled': true,
         'answers.1.disabled': true,
         'answers.2.disabled': true,
