@@ -6,6 +6,12 @@
 - open browser in localhost:3000
 - Play !
 
+## Reset Game
+
+- ``meteor reset``
+- ``meteor``
+- Play again !
+
 ## Things to improve
 
 - Implementing containers with https://github.com/kadirahq/react-komposer
