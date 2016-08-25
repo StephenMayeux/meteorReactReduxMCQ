@@ -1,4 +1,8 @@
-# Game
+# MeteorReactReduxMCQ
+
+## Preview
+
+![](meteorReactReduxMCQ.gif)
 
 ## Getting started
 
